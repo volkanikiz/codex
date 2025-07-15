@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?php echo $pageTitle ?? 'Admin'; ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="bg-gray-100">
 <nav class="bg-white shadow mb-6">
@@ -18,6 +19,7 @@
       <a href="yorumlar.php" class="text-gray-700 hover:text-gray-900">Yorumlar</a>
       <a href="sss.php" class="text-gray-700 hover:text-gray-900">SSS</a>
       <a href="galeri.php" class="text-gray-700 hover:text-gray-900">Galeri</a>
+      <a href="menu.php" class="text-gray-700 hover:text-gray-900">Menü</a>
       <a href="ayarlar.php" class="text-gray-700 hover:text-gray-900">Ayarlar</a>
       <a href="kullanicilar.php" class="text-gray-700 hover:text-gray-900">Kullanıcılar</a>
     </div>
