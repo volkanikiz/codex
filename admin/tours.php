@@ -1,51 +1,30 @@
 <?php
 $tours = json_decode(file_get_contents(__DIR__ . '/../data/tours.json'), true);
+$pageTitle = 'Turlar';
+include 'header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Turlar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Admin</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="new_tour.php">Yeni Tur Ekle</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    <h1 class="mb-4">Turlar</h1>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Tur Adı</th>
-                <th>Bölge</th>
-                <th>Fiyat</th>
-                <th>İşlemler</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($tours as $index => $tour): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($tour['name']); ?></td>
-                <td><?php echo htmlspecialchars($tour['region']); ?></td>
-                <td><?php echo htmlspecialchars($tour['price']); ?></td>
-                <td>
-                    <a class="btn btn-sm btn-primary" href="edit_tour.php?id=<?php echo $index; ?>">Düzenle</a>
-                    <a class="btn btn-sm btn-danger" href="delete_tour.php?id=<?php echo $index; ?>" onclick="return confirm('Silinsin mi?');">Sil</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<h1 class="text-2xl font-bold mb-4">Turlar</h1>
+<table class="min-w-full bg-white shadow rounded">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">Tur Adı</th>
+      <th class="py-2 px-4 border-b">Bölge</th>
+      <th class="py-2 px-4 border-b">Fiyat</th>
+      <th class="py-2 px-4 border-b">İşlemler</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach ($tours as $index => $tour): ?>
+    <tr class="hover:bg-gray-50">
+      <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($tour['name']); ?></td>
+      <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($tour['region']); ?></td>
+      <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($tour['price']); ?></td>
+      <td class="py-2 px-4 border-b space-x-2">
+        <a class="text-blue-600" href="edit_tour.php?id=<?php echo $index; ?>">Düzenle</a>
+        <a class="text-red-600" href="delete_tour.php?id=<?php echo $index; ?>" onclick="return confirm('Silinsin mi?');">Sil</a>
+      </td>
+    </tr>
+  <?php endforeach; ?>
+  </tbody>
+</table>
+<?php include 'footer.php'; ?>
